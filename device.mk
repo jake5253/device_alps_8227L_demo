@@ -47,22 +47,26 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/public.libraries.txt:$(TARGET_COPY_OUT_VENDOR)/etc/public.libraries.txt \
 
 # Ramdisk
-PRODUCT_PACKAGES += \
-    factory_init.connectivity.rc \
-    factory_init.project.rc \
-    factory_init.rc \
-    init.ac8227l.rc \
-    init.ac8227l.usb.rc \
-    init.aee.rc \
-    init.connectivity.rc \
-    init.modem.rc \
-    init.project.rc \
-    meta_init.connectivity.rc \
-    meta_init.project.rc \
-    meta_init.rc \
-    multi_init.rc \
-    fstab.ac8227l \
-    ueventd.qcom.rc \
+#PRODUCT_PACKAGES += \
+#    factory_init.connectivity.rc \
+#    factory_init.project.rc \
+#    factory_init.rc \
+#    init.ac8227l.rc \
+#    init.ac8227l.usb.rc \
+#    init.aee.rc \
+#    init.connectivity.rc \
+#    init.modem.rc \
+#    init.project.rc \
+#    meta_init.connectivity.rc \
+#    meta_init.project.rc \
+#    meta_init.rc \
+#    multi_init.rc \
+#    fstab.ac8227l \
+#    ueventd.qcom.rc \
+
+# ramdisk - use prebuilt for now
+PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,$(LOCAL_PATH)/ramdisk,root)
+
 
 # Seccomp
 PRODUCT_COPY_FILES += \
