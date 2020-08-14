@@ -18,7 +18,6 @@ TARGET_CPU_SMP := true
 ARCH_ARM_HAVE_TLS_REGISTER := true
 ARCH_ARM_HAVE_NEON := true
 
-
 TARGET_BOOTLOADER_BOARD_NAME := 8227l_demo
 
 # fix this up by examining /proc/mtd on a running device
@@ -44,21 +43,21 @@ BACKLIGHT_PATH := "/sys/class/leds/lcd-backlight/brightness"
 
 # Kernel - use prebuilt kernel for now
 #TARGET_KERNEL_CONFIG := 8227l_demo_defconfig
-TARGET_KERNEL_CONFIG := ac83xx_defconfig
+#TARGET_KERNEL_CONFIG := ac83xx_defconfig
 TARGET_KERNEL_SOURCE := kernel/alps/8227L_demo
 BOARD_KERNEL_IMAGE_NAME := zImage
 BOARD_KERNEL_CMDLINE := androidboot.selinux=permissive  androidboot.hardware=mt8127  buildvariant=user
 BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_PAGESIZE := 2048
 
-BOARD_CUSTOM_BOOTIMG_MK := device/alps/8227L_demo/mkbootimg.mk
-BOARD_MKBOOTIMG_ARGS := --cmdline "$(BOARD_KERNEL_CMDLINE)" --base 0x80000000 --pagesize 2048 --kernel_offset 0x00008000 --ramdisk_offset 0x04000000 --second_offset 0x00f00000 --tags_offset 0x00000100 --board vC29-0
+#BOARD_CUSTOM_BOOTIMG_MK := device/alps/8227L_demo/mkbootimg.mk
+#BOARD_MKBOOTIMG_ARGS := --cmdline "$(BOARD_KERNEL_CMDLINE)" --base 0x80000000 --pagesize 2048 --kernel_offset 0x00008000 --ramdisk_offset 0x04000000 --second_offset 0x00f00000 --tags_offset 0x00000100 --board vC29-0
 
 # MTK
 BOARD_HAS_MTK_HARDWARE := true
 
 # Graphics
-#BOARD_EGL_CFG := $(DEVICE_DIR)/configs/egl.cfg
+BOARD_EGL_CFG := $(DEVICE_DIR)/configs/egl.cfg
 
 # Surfaceflinger optimization for VD surfaces
 TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
@@ -83,7 +82,7 @@ WIFI_DRIVER_STATE_OFF := 0
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_MTK := true
 BOARD_BLUETOOTH_DOES_NOT_USE_RFKILL := true
-#BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_DIR)/bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_DIR)/bluetooth
 
 # RECOVERY
 TARGET_RECOVERY_FSTAB := $(DEVICE_DIR)/recovery.fstab
@@ -112,3 +111,4 @@ BOARD_SECCOMP_POLICY := $(DEVICE_DIR)/seccomp
 BOARD_SEPOLICY_DIRS += $(DEVICE_DIR)/sepolicy
 
 RECOVERY_VARIANT := twrp
+TW_USE_TOOLBOX := true
