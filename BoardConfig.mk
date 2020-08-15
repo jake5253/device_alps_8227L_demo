@@ -18,7 +18,7 @@ TARGET_CPU_SMP := true
 ARCH_ARM_HAVE_TLS_REGISTER := true
 ARCH_ARM_HAVE_NEON := true
 
-TARGET_BOOTLOADER_BOARD_NAME := 8227l_demo
+#TARGET_BOOTLOADER_BOARD_NAME := 8227l_demo
 
 # fix this up by examining /proc/mtd on a running device
 BOARD_BOOTIMAGE_PARTITION_SIZE := 0x00380000
@@ -44,14 +44,15 @@ BACKLIGHT_PATH := "/sys/class/leds/lcd-backlight/brightness"
 # Kernel - use prebuilt kernel for now
 #TARGET_KERNEL_CONFIG := 8227l_demo_defconfig
 #TARGET_KERNEL_CONFIG := ac83xx_defconfig
-TARGET_KERNEL_SOURCE := kernel/alps/8227L_demo
+#TARGET_KERNEL_SOURCE := kernel/alps/8227L_demo
+TARGET_PREBUILT_KERNEL := $(KERNEL_DIR)/zImage
 BOARD_KERNEL_IMAGE_NAME := zImage
 BOARD_KERNEL_CMDLINE := androidboot.selinux=permissive  androidboot.hardware=mt8127  buildvariant=user
 BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_PAGESIZE := 2048
 
-#BOARD_CUSTOM_BOOTIMG_MK := device/alps/8227L_demo/mkbootimg.mk
-#BOARD_MKBOOTIMG_ARGS := --cmdline "$(BOARD_KERNEL_CMDLINE)" --base 0x80000000 --pagesize 2048 --kernel_offset 0x00008000 --ramdisk_offset 0x04000000 --second_offset 0x00f00000 --tags_offset 0x00000100 --board vC29-0
+BOARD_CUSTOM_BOOTIMG_MK := device/alps/8227L_demo/mkbootimg.mk
+BOARD_MKBOOTIMG_ARGS := --cmdline "$(BOARD_KERNEL_CMDLINE)" --base 0x80000000 --pagesize 2048 --kernel_offset 0x00008000 --ramdisk_offset 0x04000000 --second_offset 0x00f00000 --tags_offset 0x00000100 --board vC29-0
 
 # MTK
 BOARD_HAS_MTK_HARDWARE := true
@@ -112,3 +113,9 @@ BOARD_SEPOLICY_DIRS += $(DEVICE_DIR)/sepolicy
 
 RECOVERY_VARIANT := twrp
 TW_USE_TOOLBOX := true
+
+TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/virtual/android_usb/android0/f_mass_storage/lun%d/file"
+
+# Hack for build
+$(shell mkdir -p $(OUT_DIR)/obj/KERNEL_OBJ/usr)
+

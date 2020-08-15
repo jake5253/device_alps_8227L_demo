@@ -1,5 +1,5 @@
 type fuelgauged_exec, exec_type, file_type;
-type fuelgauged, domain, domain_deprecated;
+type fuelgauged, domain;
 
 init_daemon_domain(fuelgauged)
 

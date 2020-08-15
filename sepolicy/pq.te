@@ -1,5 +1,5 @@
 type pq_exec, exec_type, file_type;
-type pq, domain, domain_deprecated;
+type pq, domain;
 
 init_daemon_domain(pq)
 
