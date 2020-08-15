@@ -1,1 +1,2 @@
-allow zygote sysfs_devinfo:file r_file_perms;
+allow zygote servicemanager:binder call;
+allow zygote system_server:binder { transfer call };
